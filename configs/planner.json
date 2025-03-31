@@ -1,0 +1,83 @@
+{
+  "training": { 
+    "observations": {
+      "items": [
+        {
+          "name": "joint_values",
+          "dimensions": 6,
+          "history": 0
+        },
+        {
+          "name": "end_effector_pose",
+          "dimensions": 7,
+          "history": 0
+        },
+        {
+          "name": "target_pose",
+          "dimensions": 7,
+          "history": 0
+        },
+        {
+          "name": "link_positions",
+          "dimensions": 30,
+          "history": 0
+        },
+        {
+          "name": "pose",
+          "dimensions": 7,
+          "history": 0
+        }
+      ]
+    }
+  },
+  "testing": {
+    "eval": {
+      "num_tests": 100
+    },
+    "algo": "planner",
+    "parameters": {
+      "timeout": 60,
+      "action_dim": 6,
+      "num_samples": 10,
+      "n_timesteps": 100,
+      "action_horizon": 1,
+      "observation_dim": 57,
+      "prediction_horizon": 16,
+      "observation_horizon": 2,
+      "dual_agent_model": "runs/plain_diffusion/mini_custom_diffusion_2.pth",
+      "single_agent_model": "runs/plain_diffusion/mini_custom_diffusion_1.pth"
+    }
+  },
+  "environment": {
+    "render": false,
+    "action_type": "delta",
+    "min_arms_count": 1,
+    "max_arms_count": 10,
+    "task": {
+      "generation_method": "clustered_grid",
+      "type": "static",
+      "difficulty": {
+        "min_distance_between_bases": 0.3,
+        "max_distance_between_bases": 1.0
+      }
+    },
+    "reward": {
+      "collision_penalty": -0.05,
+      "individually_reach_target": 0.01,
+      "collectively_reach_target": 1.0
+    },
+    "arms_position_picker": "evenly_spaced",
+    "retry_on_fail": false,
+    "workspace_radius": 0.85,
+    "terminate_on_collision": true,
+    "terminate_on_collectively_reach_target": true,
+    "episode_length": 1000,
+    "action_interval": 0.05,
+    "collision_distance": 0.0,
+    "stop_arm_after_reach": false,
+    "arm_type": "UR5",
+    "arm_speed": 0.008,
+    "position_tolerance": 0.02,
+    "orientation_tolerance": 0.1
+  }
+}

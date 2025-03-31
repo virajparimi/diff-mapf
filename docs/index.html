@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="Diffusion-Guided Multi-Arm Motion Planning">
+  <meta property="og:title" content="Diffusion-Guided Multi-Arm Motion Planning"/>
+  <meta property="og:description" content="Diffusion-Guided Multi-Arm Motion Planning"/>
+  <meta property="og:url" content="diff-mapf-mers.csail.mit.edu"/>
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <meta property="og:image" content="static/image/mers_logo.png" />
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+
+
+  <meta name="keywords" content="Path Planning for Multiple Arm; Multi-Robot Systems; Autonomous Agents; Diffusion Models; Planning and Learning">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>Diffusion-Guided Multi-Arm Motion Planning</title>
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://people.csail.mit.edu/vparimi/">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://info-mapf-mers.csail.mit.edu/">
+            Info-MAPF
+          </a>
+          <a class="navbar-item" href="https://safe-visual-mapf-mers.csail.mit.edu/">
+            Safe-MAPF
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+          <div class="title is-1 publication-title">
+            <a href="https://mers.csail.mit.edu/" target="_blank">
+              <img src="static/images/mers_logo.png" alt="MERS" style="width: 100px; vertical-align: middle; margin-right: 10px;">
+            </a>
+            <h1>Diffusion-Guided Multi-Arm Motion Planning</h1>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <!-- Paper authors -->
+            <span class="author-block">
+              <a href="https://people.csail.mit.edu/vparimi/" target="_blank">Viraj Parimi</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.csail.mit.edu/person/brian-williams" target="_blank">Brian Williams</a>
+            </span>
+          </div>
+          
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Massachusetts Institute of Technology<br><a href="https://proceedings.mlr.press/v305/parimi25a.html" target="_blank">CoRL 2025</a><br><a href="https://mrs-workshop.github.io/rss25/papers/" target="_blank">RSS '25 MRS</a></span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- Arxiv PDF link -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2509.08160" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+
+              <!-- Github link -->
+              <span class="link-block">
+                <a href="https://github.com/virajparimi/diff-mapf" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+
+              <!-- ArXiv abstract Link -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2509.08160" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="item" style="display: flex; flex-direction: column; align-items: center; text-align: center; justify-content: center;">
+        <h1 class="title has-text-centered">
+          High-Level Overview of our Approach
+        </h1>
+        <img src="static/images/overview.png" alt="High-Level Overview"/> 
+      </div>
+      <br>
+      <h2 class="subtitle has-text-centered">
+        We present <font color="#980000"><b>Diffusion-Guided Multi-Arm Motion Planning (DG-MAP)</b></font>, a MAPF-inspired framework that scales learning-based planners to many robotic arms without requiring massive multi-arm datasets. DG-MAP decomposes planning into single-arm trajectories and pairwise collision handling: one conditional diffusion model proposes feasible motions for each arm, while a second models dual-arm dynamics to resolve collisions. This structured integration enables efficient, coordinated plans over long horizons and larger teams, delivering strong performance across tasks and team sizes.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<!-- Teaser video-->
+<section class="section hero is-light">
+  <div class="container is-max-desktop has-text-centered">
+    <h2 class="title is-3">Summary Video</h2>
+    <div class="hero-body">
+      <video poster="" id="tree" controls muted loop height="100%" preload="metadata">
+        <source src="static/videos/spotlight_video.mp4" type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        One minute spotlight video summarizing our work.
+      </h2>
+    </div>
+  </div>
+</section>
+<!-- End teaser video -->
+
+<!-- Paper abstract -->
+<section class="section hero">
+  <div class="container is-max-desktop has-text-centered">
+    <h2 class="title is-3">Abstract</h2>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <div class="content has-text-justified">
+          <p>
+            Multi-arm motion planning is fundamental for enabling arms to complete complex long-horizon tasks in shared spaces efficiently but current methods struggle with scalability due to exponential state-space growth and reliance on large training datasets for learned models. Inspired by Multi-Agent Path Finding (MAPF), which decomposes planning into single-agent problems coupled with collision resolution, we propose a novel diffusion-guided multi-arm planner (DG-MAP) that enhances scalability of learning-based models while reducing their reliance on massive multi-arm datasets. Recognizing that collisions are primarily pairwise, we train two conditional diffusion models, one to generate feasible single-arm trajectories, and a second, to model the dual-arm dynamics required for effective pairwise collision resolution. By integrating these specialized generative models within a MAPF-inspired structured decomposition, our planner efficiently scales to larger number of arms. Evaluations against alternative learning-based methods across various team sizes demonstrate our method's effectiveness and practical applicability.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+<!-- Image carousel -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+       <div class="item">
+        <h2 class="title has-text-centered"">
+          Comparison with Baseline using Limited Data (upto 2 arms)
+        </h2>
+        <img src="static/images/baseline_ld.png" alt="Comparison with Baseline using Limited Data" loading="lazy"/>
+      </div>
+      <div class="item">
+        <h2 class="title has-text-centered">
+          Comparison with Baseline using Extensive Data (upto 4 arms)
+        </h2>
+        <img src="static/images/baseline_ed.png" alt="Comparison with Baseline using Extensive Data" loading="lazy"/>
+      </div>
+  </div>
+</div>
+</div>
+</section>
+<!-- End image carousel -->
+
+<!-- Video carousel -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h2 class="title is-3">Multi-Arm Pick and Place Task</h2>
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-video1">
+          <video poster="" id="video1" controls muted loop height="100%" preload="metadata">
+            <source src="static/videos/planner_demo_1.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-video2">
+          <video poster="" id="video2" controls muted loop height="100%" preload="metadata">
+            <source src="static/videos/planner_demo_2.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-video3">
+          <video poster="" id="video3" controls muted loop height="100%" preload="metadata">
+            <source src="static/videos/planner_demo_3.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End video carousel -->
+
+<!-- GIF carousel -->
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h2 class="title is-3">DG-MAP on Selected Tasks</h2>
+      <p class="subtitle is-5">Compressed GIFs to save memory.</p>
+      <div id="gif-carousel" class="carousel results-carousel">
+        <div class="item">
+          <h2 class="title has-text-centered">
+            Three Arms
+          </h2>
+          <img src="static/images/gifs/three_arms.gif" alt="Three arms coordinated pick and place" loading="lazy">
+        </div>
+        <div class="item">
+          <h2 class="title has-text-centered">
+            Four Arms
+          </h2>
+          <img src="static/images/gifs/four_arms.gif" alt="Four arms coordinated pick and place" loading="lazy">
+        </div>
+        <div class="item">
+          <h2 class="title has-text-centered">
+            Five Arms
+          </h2>
+          <img src="static/images/gifs/five_arms.gif" alt="Five arms coordinated pick and place" loading="lazy">
+        </div>
+        <div class="item">
+          <h2 class="title has-text-centered">
+            Six Arms
+          </h2>
+          <img src="static/images/gifs/six_arms.gif" alt="Six arms coordinated pick and place" loading="lazy">
+        </div>
+        <div class="item">
+          <h2 class="title has-text-centered">
+            Seven Arms
+          </h2>
+          <img src="static/images/gifs/seven_arms.gif" alt="Seven arms coordinated pick and place" loading="lazy">
+        </div>
+        <div class="item">
+          <h2 class="title has-text-centered">
+            Eight Arms
+          </h2>
+          <img src="static/images/gifs/eight_arms.gif" alt="Eight arms coordinated pick and place" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End GIF carousel -->
+
+
+<!-- Paper poster -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h2 class="title">Poster</h2>
+      <iframe src="static/files/CoRL_Poster.pdf" width="100%" height="550"></iframe>
+    </div>
+  </div>
+</section>
+<!-- End paper poster -->
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>
+        @InProceedings{pmlr-v305-parimi25a,
+          title = {Diffusion-Guided Multi-Arm Motion Planning},
+          author = {Parimi, Viraj and Williams, Brian C.},
+          booktitle = {Proceedings of The 9th Conference on Robot Learning},
+          pages = {4684--4696},
+          year = {2025},
+          editor = {Lim, Joseph and Song, Shuran and Park, Hae-Won},
+          volume = {305},
+          series = {Proceedings of Machine Learning Research},
+          month = {27--30 Sep},
+          publisher = {PMLR},
+          pdf = {https://raw.githubusercontent.com/mlresearch/v305/main/assets/parimi25a/parimi25a.pdf},
+          url = {https://proceedings.mlr.press/v305/parimi25a.html},
+        }
+      </code></pre>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+  <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+<!-- End of Statcounter Code -->
+</body>
+</html>
