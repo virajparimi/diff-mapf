@@ -167,7 +167,6 @@ class DiffusionQLLearner(BasePolicyAlgo):
             current_q2, target_q
         )
         self.critic_optimizer.zero_grad()
-        # Retained the graph here to potentially fix the actor_loss issue downstream
         critic_loss.backward()
         if self.grad_norm > 0.0:
             critic_grad_norm = torch.nn.utils.clip_grad_norm_(
